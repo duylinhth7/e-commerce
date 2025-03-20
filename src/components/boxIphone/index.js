@@ -1,0 +1,92 @@
+import { useEffect, useState } from "react"
+import { getListApple } from "../../services/getListProducts";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../../styles/scss/boxIphone.scss"
+import ViewMore from "../viewMore";
+
+function BoxIphone() {
+    const [data, setData] = useState(null);
+    const fetchApi = async () => {
+        const res = await getListApple();
+        setData(res)
+    }
+    useEffect(() => {
+        fetchApi();
+    }, [])
+    // console.log(data)
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5, // Hiển thị 5 phim trên desktop
+        slidesToScroll: 2,
+        // autoplay: true,
+        autoplaySpeed: 3000,
+        nextArrow: <div className="custom-next-arrow">➡</div>,
+        prevArrow: <div className="custom-prev-arrow">⬅</div>,
+        responsive: [
+            {
+                breakpoint: 1024, // Laptop & Tablet lớn hơn
+                settings: {
+                    slidesToShow: 3, // Hiển thị 4 phim
+                    slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 768, // Tablet
+                settings: {
+                    slidesToShow: 2, // Hiển thị 2 phim trên màn nhỏ
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 480, // Điện thoại nhỏ
+                settings: {
+                    slidesToShow: 2, // Hiển thị 1 phim trên điện thoại
+                    slidesToScroll: 1,
+                }
+            }
+        ]
+    };
+    return (
+        <>
+            {
+                data ?
+                    (<>
+                        <div class="container">
+                            <div className="box__iphone">
+                                <div className="box-title">
+                                    <div className="inner-title">iPhone</div>
+                                    <div className="inner-dir"></div>
+                                </div>
+                                <div className="box__iphone-list">
+                                    <Slider {...settings}>
+                                        {data.map((item, index) => (
+                                            <div key={index} className="box__iphone-item">
+                                                <div className="box__iphone-image">
+                                                    <img src={item.image} />
+                                                </div>
+                                                <div className="box__iphone-info">
+                                                    <div className="box__iphone-name">{item.name}</div>
+                                                    <div className="box__iphone-price">
+                                                        <div className="new">{item.special_price}đ</div>
+                                                        <div className="old">{item.old_price}đ</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </Slider>
+                                </div >
+                                <a style={{textDecoration:"none"}} href="/iphone"><ViewMore /></a>
+                            </div>
+                        </div>
+                    </>)
+                    :
+                    (<> </>)
+            }
+        </>
+    )
+}
+export default BoxIphone

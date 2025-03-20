@@ -1,0 +1,19 @@
+.banner{
+    align-items: center;
+    &-right{
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+    &-left{
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin: 5px;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}

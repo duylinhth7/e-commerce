@@ -1,0 +1,33 @@
+.search{
+    display: flex;
+    position: relative;
+    align-items: center;
+    &__input{
+        min-width: 100%;
+        input{
+            width: 100%;
+            min-height: 40px;
+            border: 2px solid #000;
+            border-radius: 7px;
+            padding: 4px;
+            font-size: 13px;
+        }
+    }
+    &__submit{
+        background-color: #000;
+        position: absolute;
+        right: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        width: 35px;
+        justify-content: center;
+        border-radius: 7px;
+        color: #fff;
+        &:hover{
+            background-color: #d6bf48;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+    }
+}

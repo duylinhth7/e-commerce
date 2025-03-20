@@ -1,0 +1,86 @@
+.page{
+    &-banner{
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+    &-title{
+        text-align: center
+    }
+    &-name{
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+        span{
+            color: #F1B731;
+        }
+    }
+    &-dir{
+        margin-top: 20px;
+        width: 200px;
+        height: 1.7px;
+        background: #000;
+        margin: 0 auto;
+    }
+    &-item{
+        cursor: pointer;
+        // border: 1px solid #ddd;
+        margin-bottom: 50px;
+        // height: 150px;
+        &:hover {
+            transform: scale(1.05);
+            transition: 0.5s;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+    }
+    &-names{
+        font-size: 17px;
+        font-weight: 500;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; // Giới hạn hiển thị 2 dòng
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis; // Hiển thị dấu "..." nếu quá dài
+        word-break: break-word;
+    }
+    &-image{
+        border-radius: 5px;
+        overflow: hidden;
+        background-color: #fff;
+        padding: 20px 0 10px 0;
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+    &-info{
+        // height: 100%;
+        background: #fff;
+        padding: 20px 10px;
+        border-radius: 5px;
+    }
+    &-price{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        .old{
+           text-decoration: line-through;
+        }
+        .new{
+            color: red;
+            font-weight: 600;
+        }
+    }
+}

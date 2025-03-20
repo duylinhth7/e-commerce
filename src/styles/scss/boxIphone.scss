@@ -1,0 +1,111 @@
+.box__iphone {
+    width: 100%;
+    padding: 20px 50px;
+    background-color: #F1B731;
+    margin: 0 auto  ;
+    border-radius: 10px;
+
+
+
+    &-list {
+        .slick-list {
+            // margin: 0 -10px; // Để tránh item bị dính sát vào lề
+        }
+
+        .slick-slide {
+            padding: 10px; // Tạo khoảng cách giữa các item
+        }
+    }
+
+    &-item {
+        background: #f8f8f8;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;    
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 10px;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &-image {
+        width: 100%;
+        height: auto;
+
+        img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+        }
+    }
+
+    &-info {
+        margin-top: 10px;
+    }
+
+    &-name {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; // Giới hạn hiển thị 2 dòng
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis; // Hiển thị dấu "..." nếu quá dài
+        word-break: break-word;
+    }
+
+    &-price {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .new {
+            font-size: 17px;
+            font-weight: 650;
+            color: red;
+        }
+
+        .old {
+            font-size: 14px;
+            color: gray;
+            text-decoration: line-through;
+        }
+    }
+}
+
+// Tuỳ chỉnh nút next & prev
+.custom-prev-arrow, .custom-next-arrow {
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: red;
+    }
+}
+.box-title {
+    text-align: center;
+    margin-bottom: 20px;
+    .inner-title{
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+    .inner-dir{
+        width: 80px;
+        height: 1.7px;
+        background: #000;
+        margin: 0 auto;
+    }
+}

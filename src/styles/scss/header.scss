@@ -1,0 +1,55 @@
+.layoutDefault__header .row{
+    display: flex;
+    // justify-content: space-evenly;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.layoutDefault__header{
+    padding: 20px 0 0 0;
+    &-logo{
+        color: #DAC667;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    &-right{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-left: auto;
+        color:#DAC667;
+        font-size: 23px;
+        font-weight: 500;
+        color: #000;
+            div:hover{
+            color: #DAC667;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+    }
+    &-mid{
+        color: #DAC667;
+    }
+    &-menu{
+        background: #eee;
+        ul{
+            display: flex;
+            margin: 0;
+            padding: 0px 0;
+            list-style: none;
+        }
+        li{
+            font-weight: 450;
+            padding: 10px 20px;
+            cursor: pointer;
+            &:hover{
+                background: #FFC234;
+                transition: 0.5s;
+                color: #fff;
+            }
+        }
+        .checked{
+            background: #FFC234;
+        }
+    }
+}
