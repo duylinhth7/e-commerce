@@ -5,15 +5,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../../styles/scss/detailProduct.scss";
-import {TagOutlined} from "@ant-design/icons"
+import { ShoppingOutlined, TagOutlined } from "@ant-design/icons"
 
 function DetailtProduct() {
     const params = useParams();
     const name = params.name;
     const index = parseInt(params.index);
     const [data, setData] = useState(null);
-    const [selectedGb, setSelectedGb] = useState    (0);
-    console.log(selectedGb)
+    const [selectedGb, setSelectedGb] = useState(0);
+    // console.log(selectedGb)
     const fetchApi = async () => {
         const res = await getDetailProduct(name, index);
         setData(res);
@@ -21,7 +21,7 @@ function DetailtProduct() {
     useEffect(() => {
         fetchApi();
     }, []);
-    console.log(data);
+    // console.log(data);
     var settings = {
         dots: true,
         autoplay: true,
@@ -66,27 +66,49 @@ function DetailtProduct() {
                                     </div>
                                 </div>
                                 <div className="detail__box-right col-4">
-                                    <div className="mt-40">
-                                        <div className="detail__capacities">
-                                            <div className="row g-3">
-                                                {data.capacities.map((item, index) => (
-                                                    <div className={index === selectedGb ? "detail__capacities-box col-4 selected" : "detail__capacities-box col-4"} key={index} onClick={() => handleSelected(index)}>
-                                                        <div className="detail__capacities-gb">{item.capacity}</div>
-                                                        <div className="detail__capacities-price">{item.price}đ</div>
-                                                        <div className={index === selectedGb ? "icon" : "hidden"} ><TagOutlined/> </div>
+                                    <div className="mt-40 detail__capacities">
+                                        <div className="">
+                                            {
+                                                data.capacities.length > 0 ? (<>
+                                                    <div className="detail__capacities-title">Các phiên bản dung lượng</div>
+                                                    <div className="row g-3">
+                                                        {data.capacities.map((item, index) => (
+                                                            <div className={index === selectedGb ? "detail__capacities-box col-4 selected" : "detail__capacities-box col-4"} key={index} onClick={() => handleSelected(index)}>
+                                                                <div className="detail__capacities-gb">{item.capacity}</div>
+                                                                <div className="detail__capacities-price">{item.price.toLocaleString("vi-VN")}đ</div>
+                                                                <div className={index === selectedGb ? "icon" : "hidden"} ><TagOutlined /> </div>
+                                                            </div>
+                                                        ))}
                                                     </div>
-                                                ))}
-                                            </div>
+                                                </>) : (<>
+                                                    <h2>Sản phẩm sắp về hàng</h2>
+                                                </>)
+                                            }
                                         </div>
-                                        <div className="detail__capacities-color mt-20">
-                                            <span>Các màu sắc hiện có của: <b>{data.capacities[selectedGb].capacity}</b></span>
-                                            <div className="row g-3">
-                                                {data.capacities[selectedGb].color.map((item) => (
-                                                    <div className="col-4 detail__capacities-color-item">
-                                                        <p>{item.color}</p>
-                                                        <div>{item.price}đ</div>
-                                                    </div>
-                                                ))}
+                                        {data.capacities.length > 0 ? (<>
+                                            <div className="detail__capacities-color mt-20">
+                                                <p>Các màu sắc hiện có của: <b>{data.capacities[selectedGb].capacity}</b></p>
+                                                <div className="row g-3">
+                                                    {data.capacities[selectedGb].color.map((item) => (
+                                                        <div className="col-4 detail__capacities-color-item">
+                                                            <p>{item.color}</p>
+                                                            <div>{item.price.toLocaleString("vi-VN")}đ</div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </>) : (<></>)}
+                                    </div>
+                                    <div className="mt-50">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="detail__buyNow"><ShoppingOutlined /> MUA HÀNG NGAY</div>
+                                            </div>
+                                            <div className="col-6">
+                                                <div className="mt-20 detail__add">THÊM VÀO GIỎ HÀNG</div>
+                                            </div>
+                                            <div className="col-6">
+                                                <div className="mt-20 detail__hotline">Liên hệ hotline</div>
                                             </div>
                                         </div>
                                     </div>

@@ -52,8 +52,15 @@
         }
     }
     &__capacities{
-        flex-wrap: nowrap;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 20px 30px 100px 30px;
+        // flex-wrap: nowrap;
+        border-radius: 10px;
         // gap: 1rem;
+        &-title{
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
         &-box{
             border: 1px solid #ddd;
             text-align: center;
@@ -68,10 +75,12 @@
         }
         &-color{
             text-align: left;
-            span{
-                font-weight: 500;
+            p{
+                font-weight: 600;
+                margin-bottom: 10px !important;
                 b{
-                    color: #FFC234;
+                    color: red;
+                    font-style: italic;
                 }
             }
             &-item{
@@ -79,7 +88,7 @@
                 border-radius: 10px;
                 padding: 5px 10px;
                 p{
-                    margin: 0;
+                    margin: 0 !important;
                     font-weight: 550;
                     font-size: 14px;
                 }
@@ -87,6 +96,49 @@
                     font-size: 13px;
                 }
             }
+        }
+    }
+    &__buyNow{
+        background-color: #FFC234;
+        text-align: center;
+        font-weight: 600;
+        padding: 11px  18px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background: red;
+            color: #fff;
+            transition: 0.5s;
+        }
+    }
+    &__add{
+        text-align: center;
+        border: 2px solid #FFC234;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 5px;
+        padding: 8px 5px;
+        cursor: pointer;
+        &:hover{
+            background: #FFC234;
+            color: #fff;
+            transition: 0.5s;
+            border: 2px solid #FFC234;
+        }
+    }
+    &__hotline{
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        background: red;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 5px;
+        padding: 10px 7px;
+        &:hover{
+            background: #FFC234;
+            color: #fff;
+            transition: 0.5s;
         }
     }
 }

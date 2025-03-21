@@ -76,8 +76,8 @@ function BoxIphone() {
                                                 <div className="box__iphone-info">
                                                     <div className="box__iphone-name">{item.name}</div>
                                                     <div className="box__iphone-price">
-                                                        <div className="new">{item.special_price}đ</div>
-                                                        <div className="old">{item.old_price}đ</div>
+                                                        <div className="new">{item.special_price.toLocaleString("vi-VN")}đ</div>
+                                                        <div className="old">{item.old_price.toLocaleString("vi-VN")}đ</div>
                                                     </div>
                                                 </div>
                                             </div>

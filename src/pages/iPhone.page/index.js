@@ -48,10 +48,10 @@ function IphonePage() {
                                             <div className="page-names">{item.name}</div>
                                             <div className="page-price">
                                                 <div className="new">
-                                                    {item.special_price}đ
+                                                    {item.special_price.toLocaleString("vi-VN")}đ
                                                 </div>
                                                 <div className="old">
-                                                    {item.old_price}đ
+                                                    {item.old_price.toLocaleString("vi-VN")}đ
                                                 </div>
                                             </div>
                                         </div>

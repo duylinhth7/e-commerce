@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../components/header";
 import "../../styles/scss/layoutDefault.scss";
+import Cart from "../../components/Cart";
 
 function LayoutDefault() {
     return (
@@ -10,6 +11,7 @@ function LayoutDefault() {
                 <div className="layoutDefault__main">
                     <div className="container">
                         <Outlet />
+                        <Cart />
                     </div>
                 </div>
 

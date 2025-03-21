@@ -1,7 +1,10 @@
+import { useState } from "react";
 import "../../styles/scss/header.scss"
 import Search from "../search";
-import {HeartOutlined, ShoppingCartOutlined, UserOutlined} from '@ant-design/icons';;
+import {HeartOutlined, ShoppingCartOutlined, UserOutlined} from '@ant-design/icons';import Cart from "../Cart";
+;
 function Header() {
+    const [openCart, setOpenCart] = useState(false);
     return (
         <>
             <header className="layoutDefault__header">
@@ -17,7 +20,7 @@ function Header() {
                         </div>
                         <div className="layoutDefault__header-right col-3">
                             <div className="mr-20"><HeartOutlined /></div>
-                            <div className="mr-20"><ShoppingCartOutlined /></div>
+                            <div className="mr-20" onClick={() => setOpenCart(true)}><ShoppingCartOutlined /></div>
                             <div><UserOutlined /></div>
                         </div>
                     </div>
@@ -33,6 +36,7 @@ function Header() {
                         </ul>
                     </div>
                 </div>
+                <Cart open={openCart} setOpen={setOpenCart}/>
             </header>
         </>
     )
