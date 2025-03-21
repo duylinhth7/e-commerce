@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../styles/scss/boxIphone.scss"
 import ViewMore from "../viewMore";
+import { useNavigate } from "react-router-dom";
 
 function BoxIphone() {
     const [data, setData] = useState(null);
@@ -50,6 +51,10 @@ function BoxIphone() {
             }
         ]
     };
+    const nav = useNavigate();
+    const handleClick = (index) => {
+        nav(`/detail/apple/${index}`)
+    }
     return (
         <>
             {
@@ -64,7 +69,7 @@ function BoxIphone() {
                                 <div className="box__iphone-list">
                                     <Slider {...settings}>
                                         {data.map((item, index) => (
-                                            <div key={index} className="box__iphone-item">
+                                            <div key={index} className="box__iphone-item" onClick={() => handleClick(index)} >
                                                 <div className="box__iphone-image">
                                                     <img src={item.image} />
                                                 </div>

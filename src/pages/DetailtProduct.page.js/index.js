@@ -1,0 +1,103 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getDetailProduct } from "../../services/getDetailProduct";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import "../../styles/scss/detailProduct.scss";
+import {TagOutlined} from "@ant-design/icons"
+
+function DetailtProduct() {
+    const params = useParams();
+    const name = params.name;
+    const index = parseInt(params.index);
+    const [data, setData] = useState(null);
+    const [selectedGb, setSelectedGb] = useState    (0);
+    console.log(selectedGb)
+    const fetchApi = async () => {
+        const res = await getDetailProduct(name, index);
+        setData(res);
+    }
+    useEffect(() => {
+        fetchApi();
+    }, []);
+    console.log(data);
+    var settings = {
+        dots: true,
+        autoplay: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
+    const handleSelected = (index) => {
+        setSelectedGb(index);
+    }
+    return (
+        <>
+            {data ? (
+                <>
+                    <div className="detail mt-20">
+                        <div className="container">
+                            <div className="detail__name">{data.name}</div>
+                            <div className="row g-5">
+                                <div className="col-7">
+                                    <div className="detail__box-left">
+                                        <div className="detail__slider mt-40">
+                                            <Slider {...settings}>
+                                                {data.images.map((item) => (
+                                                    <div className="detail__slider-img">
+                                                        <img src={item} />
+                                                    </div>
+                                                ))}
+                                            </Slider>
+                                        </div>
+                                        <div className="detail__technology mt-50">
+                                            <div className="detail__technology-title">Thông số kỹ thuật</div>
+                                            <ul className="detait__technology-content">
+                                                {data.tskt.map((item, index) => (
+                                                    <li key={index} className={(index + 1) % 2 == 0 ? "gray-content" : ""}>
+                                                        <p>{item.name}: </p>
+                                                        <div>{item.value}</div>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="detail__box-right col-4">
+                                    <div className="mt-40">
+                                        <div className="detail__capacities">
+                                            <div className="row g-3">
+                                                {data.capacities.map((item, index) => (
+                                                    <div className={index === selectedGb ? "detail__capacities-box col-4 selected" : "detail__capacities-box col-4"} key={index} onClick={() => handleSelected(index)}>
+                                                        <div className="detail__capacities-gb">{item.capacity}</div>
+                                                        <div className="detail__capacities-price">{item.price}đ</div>
+                                                        <div className={index === selectedGb ? "icon" : "hidden"} ><TagOutlined/> </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="detail__capacities-color mt-20">
+                                            <span>Các màu sắc hiện có của: <b>{data.capacities[selectedGb].capacity}</b></span>
+                                            <div className="row g-3">
+                                                {data.capacities[selectedGb].color.map((item) => (
+                                                    <div className="col-4 detail__capacities-color-item">
+                                                        <p>{item.color}</p>
+                                                        <div>{item.price}đ</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>)
+                :
+                (<></>)}
+        </>
+    )
+}
+export default DetailtProduct;
