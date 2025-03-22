@@ -11,6 +11,25 @@
         color: #DAC667;
         font-size: 30px;
         font-weight: 600;
+    };
+    &-cart{
+        position: relative;
+        div{
+            position: absolute;
+            font-size: 10px;
+            top: -5px;
+            right: -10px;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            border-radius: 50%;
+            color: #fff;
+            background-color: #FFC234;
+            padding: 2px;
+            &:hover{
+                color: #fff !important;
+            }
+        }
     }
     &-right{
         display: flex;
@@ -18,7 +37,7 @@
         align-items: center;
         margin-left: auto;
         color:#DAC667;
-        font-size: 23px;
+        font-size: 27px;
         font-weight: 500;
         color: #000;
             div:hover{

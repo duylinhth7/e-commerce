@@ -6,10 +6,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../../styles/scss/detailProduct.scss";
 import { ShoppingOutlined, TagOutlined } from "@ant-design/icons"
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, updateQuantity } from "../../actions/cart";
 
 function DetailtProduct() {
     const params = useParams();
     const name = params.name;
+    const dispatch = useDispatch();
     const index = parseInt(params.index);
     const [data, setData] = useState(null);
     const [selectedGb, setSelectedGb] = useState(0);
@@ -32,6 +35,14 @@ function DetailtProduct() {
     };
     const handleSelected = (index) => {
         setSelectedGb(index);
+    };
+    const cart = useSelector(state => state.cartReducer);
+    const handleAddToCart = () => {
+        if (cart.some(itemCart => itemCart.url === data.url)) {
+            dispatch(updateQuantity(data.url))
+        } else {
+            dispatch(addToCart(data.url, data))
+        }
     }
     return (
         <>
@@ -105,7 +116,7 @@ function DetailtProduct() {
                                                 <div className="detail__buyNow"><ShoppingOutlined /> MUA HÀNG NGAY</div>
                                             </div>
                                             <div className="col-6">
-                                                <div className="mt-20 detail__add">THÊM VÀO GIỎ HÀNG</div>
+                                                <div className="mt-20 detail__add" onClick={() => (handleAddToCart())}>THÊM VÀO GIỎ HÀNG</div>
                                             </div>
                                             <div className="col-6">
                                                 <div className="mt-20 detail__hotline">Liên hệ hotline</div>

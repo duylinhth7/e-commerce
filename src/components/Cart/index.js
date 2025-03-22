@@ -1,6 +1,16 @@
-import {DeleteOutlined} from "@ant-design/icons"
+import { DeleteOutlined } from "@ant-design/icons"
 import "../../styles/scss/cart.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProduct } from "../../actions/cart";
 function Cart({ open, setOpen, data }) {
+    const cart = useSelector(state => state.cartReducer);
+    const total = cart.reduce((sum, item) => {
+        return sum += item.quantity;
+    }, 0);
+    const price = cart.reduce((price, item) => {
+        return price += item.info.special_price * item.quantity;
+    }, 0);
+    const dispatch = useDispatch();
     return (
         <>
             <div className={open ? "overlay" : ""} onClick={() => setOpen(false)}></div>
@@ -11,15 +21,42 @@ function Cart({ open, setOpen, data }) {
                 </div>
                 <div className="cart__main">
                     {
-                        data ? (<>ok</>) : (
-                        <>
-                        <div className="cart__main-null">
-                            <div>
-                            <DeleteOutlined />
-                            </div>
-                            <span>Chưa có sản phẩm nào trong giỏ hàng</span>
-                        </div>
-                        </>
+                        total > 0 ? (
+                            <>
+                                <ul className="cart__main-list ">
+                                    {cart.map((item, index) => (
+                                        <li className="cart__main-item mt-10" key={index}>
+                                            <div className="cart__main-image">
+                                                <img src={item.info.image} />
+                                            </div>
+                                            <div className="cart__main-info">
+                                                <div className="cart__main-name">{item.info.name}</div> 
+                                                <div className="cart__main-quantity">x {item.quantity}</div>
+                                                <div className="cart__main-price">{((item.info.special_price) * item.quantity).toLocaleString("vi-VN")}đ</div>
+                                            </div>
+                                            <button className="cart__main-delete" onClick={() => dispatch(deleteProduct(item.url))}>Xóa</button>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="cart__footer">
+                                    <div className="cart__footer-price">
+                                        <span>Tổng tiền:</span>
+                                        <div>{price.toLocaleString("vi-VN")}đ</div>
+                                    </div>
+                                    <div className="cart__footer-btn">
+                                        <a>Xem giỏ hàng</a>
+                                        <a className="mt-10">Thanh toán</a>
+                                    </div>
+                                </div>
+                            </>) : (
+                            <>
+                                <div className="cart__main-null">
+                                    <div>
+                                        <DeleteOutlined />
+                                    </div>
+                                    <span>Chưa có sản phẩm nào trong giỏ hàng</span>
+                                </div>
+                            </>
                         )
                     }
                 </div>
