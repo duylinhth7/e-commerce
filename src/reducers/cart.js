@@ -17,6 +17,9 @@ const cartReducer = (state = [], action) => {
 
         case "DELETE_PRODUCT":
             return newState.filter(item => item.url !== action.url);
+        case "DELETE_ALL":
+            state = [];
+            return state
         default:
             return state
     }

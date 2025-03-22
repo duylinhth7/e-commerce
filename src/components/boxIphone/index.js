@@ -6,16 +6,20 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../styles/scss/boxIphone.scss"
 import ViewMore from "../viewMore";
 import { useNavigate } from "react-router-dom";
+import ProductActions from "../productActions";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../actions/cart";
 
 function BoxIphone() {
     const [data, setData] = useState(null);
+    const dispatch = useDispatch()
     const fetchApi = async () => {
         const res = await getListApple();
         setData(res)
     }
     useEffect(() => {
         fetchApi();
-    }, [])
+    }, []);
     // console.log(data)
     const settings = {
         dots: false,
@@ -54,6 +58,9 @@ function BoxIphone() {
     const nav = useNavigate();
     const handleClick = (index) => {
         nav(`/detail/apple/${index}`)
+    };
+    const addCart = (product) => {
+        dispatch(addToCart(product))
     }
     return (
         <>
@@ -80,11 +87,12 @@ function BoxIphone() {
                                                         <div className="old">{item.old_price.toLocaleString("vi-VN")}đ</div>
                                                     </div>
                                                 </div>
+                                                    <ProductActions item = {item}/> 
                                             </div>
                                         ))}
                                     </Slider>
                                 </div >
-                                <a style={{textDecoration:"none"}} href="/iphone"><ViewMore /></a>
+                                <a style={{textDecoration:"none"}} onClick={() => {nav("iphone")}}><ViewMore /></a>
                             </div>
                         </div>
                     </>)

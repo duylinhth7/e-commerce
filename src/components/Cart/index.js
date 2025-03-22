@@ -1,7 +1,8 @@
 import { DeleteOutlined } from "@ant-design/icons"
 import "../../styles/scss/cart.scss";
+import { useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct } from "../../actions/cart";
+import { deleteAll, deleteProduct } from "../../actions/cart";
 function Cart({ open, setOpen, data }) {
     const cart = useSelector(state => state.cartReducer);
     const total = cart.reduce((sum, item) => {
@@ -11,6 +12,8 @@ function Cart({ open, setOpen, data }) {
         return price += item.info.special_price * item.quantity;
     }, 0);
     const dispatch = useDispatch();
+    // console.log(cart)
+    const nav = useNavigate();
     return (
         <>
             <div className={open ? "overlay" : ""} onClick={() => setOpen(false)}></div>
@@ -30,7 +33,7 @@ function Cart({ open, setOpen, data }) {
                                                 <img src={item.info.image} />
                                             </div>
                                             <div className="cart__main-info">
-                                                <div className="cart__main-name">{item.info.name}</div> 
+                                                <div className="cart__main-name">{item.info.name}</div>
                                                 <div className="cart__main-quantity">x {item.quantity}</div>
                                                 <div className="cart__main-price">{((item.info.special_price) * item.quantity).toLocaleString("vi-VN")}đ</div>
                                             </div>
@@ -44,8 +47,9 @@ function Cart({ open, setOpen, data }) {
                                         <div>{price.toLocaleString("vi-VN")}đ</div>
                                     </div>
                                     <div className="cart__footer-btn">
-                                        <a>Xem giỏ hàng</a>
+                                        <a onClick={() => (nav("/cart-detail"), setOpen(false))}>Xem giỏ hàng</a>
                                         <a className="mt-10">Thanh toán</a>
+                                        <a className="mt-10"onClick={() => {dispatch(deleteAll())}}>Xóa tất cả</a>
                                     </div>
                                 </div>
                             </>) : (

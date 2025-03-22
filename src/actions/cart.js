@@ -18,3 +18,8 @@ export const deleteProduct = (url) => {
         url: url,
     }
 }
+export const deleteAll = () => {
+    return{
+        type: "DELETE_ALL"
+    }
+}

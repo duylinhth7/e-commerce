@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "../../styles/scss/header.scss"
 import Search from "../search";
-import { HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'; import Cart from "../Cart";
+import { HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'; 
+import Cart from "../Cart";
 import { useSelector } from "react-redux";
 ;
 function Header() {

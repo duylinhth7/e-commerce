@@ -3,6 +3,7 @@ import bannerIphone2 from "../../images/banner-iphone-2.png";
 import { useEffect, useState } from "react"
 import "../../styles/scss/iphonePage.scss";
 import { getListApple } from "../../services/getListProducts";
+import ProductActions from "../../components/productActions";
 function IphonePage() {
     const [data, setData] = useState(null);
     const fetchApi = async () => {
@@ -40,7 +41,7 @@ function IphonePage() {
                         <div className="page-list mt-50">
                             <div className="row row-cols-5">
                                 {data.map((item, index) => (
-                                    <div className="page-item">
+                                    <div className="page-item" key={index}>
                                         <div className="page-image">
                                             <img src={item.image} />
                                         </div>
@@ -55,7 +56,7 @@ function IphonePage() {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <ProductActions item={item} />
                                     </div>
                                 ))}
                             </div>

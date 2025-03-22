@@ -3,6 +3,7 @@ import "../../styles/scss/boxSamsung.scss"
 import { getListSamsung } from "../../services/getListProducts";
 import ViewMore from "../viewMore";
 import { useNavigate } from "react-router-dom";
+import ProductActions from "../productActions";
 
 function BoxSamsung() {
     const [data, setData] = useState(null);
@@ -40,6 +41,7 @@ function BoxSamsung() {
                                             <div className="old">{item.old_price.toLocaleString("vi-VN")}đ</div>
                                         </div>
                                     </div>
+                                    <ProductActions item={item} />
                                 </div>
                             ))}
                         </div>
