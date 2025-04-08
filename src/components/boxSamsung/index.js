@@ -45,7 +45,7 @@ function BoxSamsung() {
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-40">
+                        <div className="mt-40"  onClick = {() => {nav("/samsung")}}>
                             <ViewMore />
                         </div>
                     </div>

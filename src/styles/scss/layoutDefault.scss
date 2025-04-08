@@ -1,5 +1,18 @@
+.layoutDefault{
+    position: relative;
+    // .header{
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     z-index: 1000; // cho nó nổi trên mấy cái div khác
+    //     background-color: #fff; // hoặc màu nền của Header bạn đang dùng
+    //     transition: all 0.3s ease; // <--- cái này nè
+
+    // }
+}
 .layoutDefault__main{
     position: relative;
     background-color: #F5F5F5;
-    padding: 20px 0;
+    padding-top: 20px;
 }
