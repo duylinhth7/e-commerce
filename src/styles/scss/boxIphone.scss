@@ -110,3 +110,10 @@
         margin: 0 auto;
     }
 }
+@media (max-width: 1350px){
+    .box__iphone-price{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

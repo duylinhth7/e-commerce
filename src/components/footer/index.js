@@ -8,7 +8,7 @@ function Footer() {
                 <div className="footer__info">
                     <div className="container">
                         <div className="row">
-                            <div className="col-3">
+                            <div className="col-md-3 col-sm-6 col-6">
 
                                 <ul>
                                     <li>
@@ -24,7 +24,7 @@ function Footer() {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="col-3">
+                            <div className="col-md-3 col-sm-6 col-6">
 
                                 <ul>
                                     <li>
@@ -41,7 +41,7 @@ function Footer() {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="col-3">
+                            <div className="col-md-3 col-sm-6 col-6">
                                 <ul>
                                     <li>
                                         <h4>VỀ CHÚNG TÔI</h4>
@@ -57,7 +57,7 @@ function Footer() {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="col-3">
+                            <div className="col-md-3 col-sm-6 col-6">
                                 <ul>
                                     <li>
                                         <h4>CHĂM SÓC KHÁCH HÀNG</h4>

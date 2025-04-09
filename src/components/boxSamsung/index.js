@@ -4,6 +4,7 @@ import { getListSamsung } from "../../services/getListProducts";
 import ViewMore from "../viewMore";
 import { useNavigate } from "react-router-dom";
 import ProductActions from "../productActions";
+import LazyLoadWrapper from "../lazyload";
 
 function BoxSamsung() {
     const [data, setData] = useState(null);
@@ -28,11 +29,11 @@ function BoxSamsung() {
                             <div className="inner-title">SamSung</div>
                             <div className="inner-dir"></div>
                         </div>
-                        <div className="box__samsung row  row-cols-5 g-3">
+                        <div className="box__samsung row  row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
                             {data.map((item, index) => (
                                 <div key={index} className="box__samsung-item" onClick={() => {handleClick(index)}}>
                                     <div className="box__samsung-image">
-                                        <img src={item.image} alt={item.name} />
+                                        <img src={item.image} alt={item.name}  loading="lazy" />
                                     </div>
                                     <div className="box__samsung-info">
                                         <div className="box__samsung-name">{item.name}</div>

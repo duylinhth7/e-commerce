@@ -10,13 +10,13 @@ function Home() {
     return (
         <>
             <div className="home">
-                <div className="home_banner">
-                    <div className="home_banner-title">
+                <div className="home_banner row">
+                    <div className="home_banner-title col-xl-12 col-md-6">
                         <span>Galaxy A56 | A36 5G</span>
                         <p>Khám phá ngay ưu đãi mua Galaxy A56 | A36 5G mới</p>
                         <button>Tìm hiểu thêm</button>
                     </div>
-                    <video autoPlay muted loop>
+                    <video className="col-12" autoPlay muted loop>
                         <source src={bannerMain} type="video/mp4"/>   
                     </video>
                 </div>

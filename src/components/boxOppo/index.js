@@ -28,7 +28,7 @@ function BoxOppo() {
                             <div className="inner-title">Oppo</div>
                             <div className="inner-dir"></div>
                         </div>
-                        <div className="box__oppo row  row-cols-5 g-3">
+                        <div className="box__oppo row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
                             {data.map((item, index) => (
                                 <div key={index} className="box__oppo-item" onClick={() => { handleClick(index) }}>
                                     <div className="box__oppo-image">

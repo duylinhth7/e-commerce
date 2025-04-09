@@ -88,3 +88,35 @@
     border-radius: 0;
     background-color: #fff !important;
 }
+.nav-list{
+    list-style: none;
+    align-items: center;
+    padding: 0;
+    li{
+        text-align: left !important;
+        margin-bottom: 5px;
+        cursor: pointer;
+        &:hover{
+            background-color: #FFC234;
+        }
+    }
+}
+.nav-logo{
+    display: none;
+    cursor: pointer;
+}
+
+@media  (max-width: 768px){
+    .nav-logo{
+        display: inline-block;
+        padding: 5px;
+    }
+    .search{
+        display: none !important;
+    }
+    .layoutDefault__header-menu{
+        ul{
+            display: none;
+        }
+    }
+}

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ProductActions from "../productActions";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../actions/cart";
-
+import { AppleFilled } from "@ant-design/icons"
 function BoxIphone() {
     const [data, setData] = useState(null);
     const dispatch = useDispatch()
@@ -27,7 +27,7 @@ function BoxIphone() {
         speed: 500,
         slidesToShow: 5, // Hiển thị 5 phim trên desktop
         slidesToScroll: 2,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3000,
         nextArrow: <div className="custom-next-arrow">➡</div>,
         prevArrow: <div className="custom-prev-arrow">⬅</div>,
@@ -67,10 +67,12 @@ function BoxIphone() {
             {
                 data ?
                     (<>
-                        <div class="container">
+                        <div className="container">
                             <div className="box__iphone">
                                 <div className="box-title">
-                                    <div className="inner-title">iPhone</div>
+                                    <div className="inner-title">
+                                        <AppleFilled />
+                                        iPhone</div>
                                     <div className="inner-dir"></div>
                                 </div>
                                 <div className="box__iphone-list">
@@ -78,7 +80,7 @@ function BoxIphone() {
                                         {data.map((item, index) => (
                                             <div key={index} className="box__iphone-item" onClick={() => handleClick(index)} >
                                                 <div className="box__iphone-image">
-                                                    <img src={item.image} />
+                                                    <img src={item.image} loading="lazy" />
                                                 </div>
                                                 <div className="box__iphone-info">
                                                     <div className="box__iphone-name">{item.name}</div>

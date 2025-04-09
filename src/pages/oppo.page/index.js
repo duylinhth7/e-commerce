@@ -39,7 +39,7 @@ function OppoPage() {
 
                     {data ? (<>
                         <div className="page-list mt-50">
-                            <div className="row row-cols-5">
+                            <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
                                 {data.map((item, index) => (
                                     <div className="page-item" key={index}>
                                         <div className="page-image">

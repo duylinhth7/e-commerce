@@ -5,14 +5,14 @@
         justify-content: center;
         &-title{
             position: absolute;
-            left: 150px;
-            bottom: 50%;
+            left: 10%;
+            bottom: 35%;
             span{
-                font-size: 38px;
+                font-size: 2.5rem;
                 font-weight: 700;
             }
             p{
-                margin-top: 10px;
+                margin-top: 1.2rem;
             }
             button{
                 border: 1px solid #fff;
@@ -22,6 +22,13 @@
                 color: #fff;
                 font-weight: 600;
             }
+        }
+    }
+}
+@media(max-width: 500px){
+    .home_banner-title{
+        span, p{
+            display: none;
         }
     }
 }

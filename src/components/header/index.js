@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "../../styles/scss/header.scss"
 import Search from "../search";
-import { DownOutlined, FontSizeOutlined, HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { DownOutlined, FontSizeOutlined, HeartOutlined, ShoppingCartOutlined, UnorderedListOutlined, UserOutlined } from '@ant-design/icons';
 import Cart from "../Cart";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Dropdown } from "antd";
+import { Drawer, Dropdown } from "antd";
 ;
 function Header() {
     const [openCart, setOpenCart] = useState(false);
@@ -19,22 +19,27 @@ function Header() {
         {
             key: 1,
             label: (
-                <a onClick={() => {nav("/iphone")}}>IPHONE</a>
+                <a onClick={() => { nav("/iphone") }}>IPHONE</a>
             )
         },
         {
             key: 2,
             label: (
-                <a onClick={() => {nav("/samsung")}}>SAMSUNG</a>
+                <a onClick={() => { nav("/samsung") }}>SAMSUNG</a>
             )
         },
         {
             key: 3,
             label: (
-                <a onClick={() => {nav("/oppo")}}>OPPO</a>
+                <a onClick={() => { nav("/oppo") }}>OPPO</a>
             )
         }
-    ]
+    ];
+    const [open, setOpen] = useState(false);
+    const onClose = () => {
+        setOpen(false)
+    }
+
     return (
         <>
             <header className="layoutDefault__header">
@@ -61,18 +66,39 @@ function Header() {
                 </div>
                 <div className="layoutDefault__header-menu">
                     <div className="container">
+                        <div onClick={() => { setOpen(!open) }} className="nav-logo">
+                            <UnorderedListOutlined />
+                        </div>
                         <ul>
-                            <li className= {checked == "home" ? "checked" : ""} onClick={() => {setChecked("home"); nav("/")}}>TRANG CHỦ</li>
-                            <li  style={{textAlign: "center"}} className= {checked == "brand" ? "checked" : ""} onClick={() => {setChecked("brand")}}>
+                            <li className={checked == "home" ? "checked" : ""} onClick={() => { setChecked("home"); nav("/") }}>TRANG CHỦ</li>
+                            <li style={{ textAlign: "center" }} className={checked == "brand" ? "checked" : ""} onClick={() => { setChecked("brand") }}>
                                 <Dropdown overlayClassName="dropdown-custom" menu={{ items }} placement="bottom">
                                     THƯƠNG HIỆU
                                 </Dropdown>
-                                <DownOutlined style={{fontSize: '10px'}} />
+                                <DownOutlined style={{ fontSize: '10px' }} />
                             </li>
-                            <li className= {checked == "info" ? "checked" : ""} onClick={() => {setChecked("info")}} >GIỚI THIỆU</li>
-                            <li className= {checked == "info" ? "checked" : ""} onClick={() => {setChecked("")}} >TƯ VẤN</li>
-                            <li className= {checked == "contact" ? "checked" : ""} onClick={() => {setChecked("contact")}}>LIÊN HỆ</li>
+                            <li className={checked == "info" ? "checked" : ""} onClick={() => { setChecked("info") }} >GIỚI THIỆU</li>
+                            <li className={checked == "advise" ? "checked" : ""} onClick={() => { setChecked("advise"); nav("/contact") }} >TƯ VẤN</li>
+                            <li className={checked == "contact" ? "checked" : ""} onClick={() => { setChecked("contact"); nav("/contact") }}>LIÊN HỆ</li>
                         </ul>
+
+                        {/* Navbar left */}
+                        <Drawer title="MENU" onClose={onClose} open={open}>
+                            <ul className="nav-list">
+                                <li className={checked == "home" ? "checked" : ""} onClick={() => { setChecked("home"); nav("/"); setOpen(false) }}>TRANG CHỦ</li>
+                                <li style={{ textAlign: "center" }} className={checked == "brand" ? "checked" : ""} onClick={() => { setChecked("brand"); setOpen(false) }}>
+                                    <Dropdown overlayClassName="dropdown-custom" menu={{ items }} placement="bottom">
+                                        THƯƠNG HIỆU
+                                    </Dropdown>
+                                    <DownOutlined style={{ fontSize: '10px' }} />
+                                </li>
+                                <li className={checked == "info" ? "checked" : ""} onClick={() => { setChecked("info"); setOpen(false) }} >GIỚI THIỆU</li>
+                                <li className={checked == "advise" ? "checked" : ""} onClick={() => { setChecked("advise"); nav("/contact"); setOpen(false) }} >TƯ VẤN</li>
+                                <li className={checked == "contact" ? "checked" : ""} onClick={() => { setChecked("contact"); nav("/contact"); setOpen(false) }}>LIÊN HỆ</li>
+                            </ul>
+                        </Drawer>
+
+                        {/* end navbar left */}
                     </div>
                 </div>
                 <Cart open={openCart} setOpen={setOpenCart} />

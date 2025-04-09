@@ -7,6 +7,7 @@ import DetailtProduct from './pages/DetailtProduct.page.js';
 import CartDetail from './components/Cart/cartDetail.js';
 import SamSungPage from './pages/samsung.page/index.js';
 import OppoPage from './pages/oppo.page/index.js';
+import Contact from './pages/contact.page/index.js';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/iphone" element={<IphonePage />}/>
           <Route path="/samsung" element={<SamSungPage />}/>
           <Route path="/oppo" element={<OppoPage />}/>
+          <Route path="/contact" element={<Contact />}/>
           <Route path="/cart-detail" element={<CartDetail />} />
           <Route path="/detail/:name/:index" element={<DetailtProduct />}/>
         </Route>
