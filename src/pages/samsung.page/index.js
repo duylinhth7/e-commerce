@@ -49,11 +49,15 @@ function SamSungPage() {
                                             <div className="page-names">{item.name}</div>
                                             <div className="page-price">
                                                 <div className="new">
-                                                            {item.special_price ? (<>{item.special_price.toLocaleString("vi-VN")}</>) : (<>{item.price.toLocaleString("vi-VN")}</>) }đ
+                                                    {item.special_price ? (<>{item.special_price.toLocaleString("vi-VN")}</>) : (<>{item.price.toLocaleString("vi-VN")}</>)}đ
                                                 </div>
                                                 <div className="old">
-                                                    {item.old_price ? (<>{item.old_price.toLocaleString("vi-VN")}đ</>): (<></>)}
+                                                    {item.old_price ? (<>{item.old_price.toLocaleString("vi-VN")}đ</>) : (<></>)}
                                                 </div>
+                                            </div>
+                                            <div className="inner-rate">
+                                                <div className="start"></div>
+                                                <div className="rate"></div>
                                             </div>
                                         </div>
                                         <ProductActions item={item} />

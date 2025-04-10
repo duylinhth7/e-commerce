@@ -31,9 +31,9 @@ function BoxSamsung() {
                         </div>
                         <div className="box__samsung row  row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
                             {data.map((item, index) => (
-                                <div key={index} className="box__samsung-item" onClick={() => {handleClick(index)}}>
+                                <div key={index} className="box__samsung-item" onClick={() => { handleClick(index) }}>
                                     <div className="box__samsung-image">
-                                        <img src={item.image} alt={item.name}  loading="lazy" />
+                                        <img src={item.image} alt={item.name} loading="lazy" />
                                     </div>
                                     <div className="box__samsung-info">
                                         <div className="box__samsung-name">{item.name}</div>
@@ -41,12 +41,16 @@ function BoxSamsung() {
                                             <div className="new">{item.special_price.toLocaleString("vi-VN")}đ</div>
                                             <div className="old">{item.old_price.toLocaleString("vi-VN")}đ</div>
                                         </div>
+                                        <div className="inner-rate">
+                                            <div className="start"></div>
+                                            <div className="rate"></div>
+                                        </div>
                                     </div>
                                     <ProductActions item={item} />
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-40"  onClick = {() => {nav("/samsung")}}>
+                        <div className="mt-40" onClick={() => { nav("/samsung") }}>
                             <ViewMore />
                         </div>
                     </div>

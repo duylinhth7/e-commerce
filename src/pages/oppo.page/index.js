@@ -55,6 +55,10 @@ function OppoPage() {
                                                     {item.old_price ? (<>{item.old_price.toLocaleString("vi-VN")}đ</>) : (<></>)}
                                                 </div>
                                             </div>
+                                            <div className="inner-rate">
+                                                <div className="start"></div>
+                                                <div className="rate"></div>
+                                            </div>
                                         </div>
                                         <ProductActions item={item} />
                                     </div>

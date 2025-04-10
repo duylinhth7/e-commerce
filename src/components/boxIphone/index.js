@@ -10,6 +10,7 @@ import ProductActions from "../productActions";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../actions/cart";
 import { AppleFilled } from "@ant-design/icons"
+import { Skeleton } from 'antd';
 function BoxIphone() {
     const [data, setData] = useState(null);
     const dispatch = useDispatch()
@@ -88,6 +89,10 @@ function BoxIphone() {
                                                         <div className="new">{item.special_price.toLocaleString("vi-VN")}đ</div>
                                                         <div className="old">{item.old_price.toLocaleString("vi-VN")}đ</div>
                                                     </div>
+                                                    <div className="inner-rate">
+                                                        <div className="start"></div>
+                                                        <div className="rate"></div>
+                                                    </div>
                                                 </div>
                                                     <ProductActions item = {item}/> 
                                             </div>
@@ -99,7 +104,7 @@ function BoxIphone() {
                         </div>
                     </>)
                     :
-                    (<> </>)
+                    (<><Skeleton /></>)
             }
         </>
     )

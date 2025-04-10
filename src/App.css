@@ -40,6 +40,23 @@
   .App-link {
     color: #61dafb;
   }
+  .inner-rate{
+    display: flex;
+    justify-content: center;
+}
+  .start::before{
+    font-weight: 300;
+    font-size: 13px;
+    content: "\f005\f005\f005\f005\f005";
+    font-family: 'Font Awesome 6 Free';
+    color: #d4d4d4;
+  }
+  .rate::before{
+    content: "(0)";
+    font-size: 12px;
+    margin-left: 3px;
+    color: #333 ;
+  }
 
   @keyframes App-logo-spin {
     from {

@@ -32,20 +32,24 @@ function BoxOppo() {
                             {data.map((item, index) => (
                                 <div key={index} className="box__oppo-item" onClick={() => { handleClick(index) }}>
                                     <div className="box__oppo-image">
-                                        <img src={item.image} alt={item.name} />
+                                        <img src={item.image} alt={item.name} loading="lazy" />
                                     </div>
                                     <div className="box__oppo-info">
                                         <div className="box__oppo-name">{item.name}</div>
                                         <div className="box__oppo-price">
-                                            <div className="new">{item.special_price ? (<>{item.special_price.toLocaleString("vi-VN")}</>): (<>{item.price.toLocaleString("vi-VN")}</>)}đ</div>
-                                            <div className="old">{item.old_price ? (<>{item.old_price.toLocaleString("vi-VN")}đ</>): (<></>)}</div>
+                                            <div className="new">{item.special_price ? (<>{item.special_price.toLocaleString("vi-VN")}</>) : (<>{item.price.toLocaleString("vi-VN")}</>)}đ</div>
+                                            <div className="old">{item.old_price ? (<>{item.old_price.toLocaleString("vi-VN")}đ</>) : (<></>)}</div>
+                                        </div>
+                                        <div className="inner-rate">
+                                            <div className="start"></div>
+                                            <div className="rate"></div>
                                         </div>
                                     </div>
                                     <ProductActions item={item} />
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-40" onClick={() => {nav("/oppo")}}>
+                        <div className="mt-40" onClick={() => { nav("/oppo") }}>
                             <ViewMore />
                         </div>
                     </div>

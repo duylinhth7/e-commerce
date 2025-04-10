@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import "../../styles/scss/iphonePage.scss";
 import { getListApple } from "../../services/getListProducts";
 import ProductActions from "../../components/productActions";
+import { Skeleton } from 'antd';
 function IphonePage() {
     const [data, setData] = useState(null);
     const fetchApi = async () => {
@@ -55,6 +56,10 @@ function IphonePage() {
                                                     {item.old_price.toLocaleString("vi-VN")}đ
                                                 </div>
                                             </div>
+                                            <div className="inner-rate">
+                                                <div className="start"></div>
+                                                <div className="rate"></div>
+                                            </div>
                                         </div>
                                         <ProductActions item={item} />
                                     </div>
@@ -62,7 +67,7 @@ function IphonePage() {
                             </div>
                         </div>
                     </>) :
-                        (<>Không có sản phẩm nào</>)}
+                        (<><Skeleton paragraph={{ rows: 5 }} /></>)}
                 </div>
             </div>
         </>
