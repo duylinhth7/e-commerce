@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDetailProduct } from "../../services/getDetailProduct";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,6 +8,7 @@ import "../../styles/scss/detailProduct.scss";
 import { ShoppingOutlined, TagOutlined } from "@ant-design/icons"
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, updateQuantity } from "../../actions/cart";
+import {addToOrder } from "../../actions/order"
 
 function DetailtProduct() {
     const params = useParams();
@@ -36,6 +37,7 @@ function DetailtProduct() {
     const handleSelected = (index) => {
         setSelectedGb(index);
     };
+    const nav = useNavigate();
     const cart = useSelector(state => state.cartReducer);
     const handleAddToCart = () => {
         if (cart.some(itemCart => itemCart.url === data.url)) {
@@ -43,6 +45,10 @@ function DetailtProduct() {
         } else {
             dispatch(addToCart(data.url, data))
         }
+    }
+    const handleAddToOrder = () => {
+        dispatch(addToOrder(data.url, data));
+        nav("/order")
     }
     return (
         <>
@@ -113,7 +119,7 @@ function DetailtProduct() {
                                     <div className="mt-50">
                                         <div className="row">
                                             <div className="col-12">
-                                                <div className="detail__buyNow"><ShoppingOutlined /> MUA HÀNG NGAY</div>
+                                                <div className="detail__buyNow" onClick={() => (handleAddToOrder())}><ShoppingOutlined /> MUA HÀNG NGAY</div>
                                             </div>
                                             <div className="col-6">
                                                 <div className="mt-20 detail__add" onClick={() => (handleAddToCart())}>THÊM VÀO GIỎ HÀNG</div>

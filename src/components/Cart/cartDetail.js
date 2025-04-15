@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/scss/cartDetail.scss";
 import { deleteProduct } from "../../actions/cart";
+import { useNavigate } from "react-router-dom";
+import { addToOrder } from "../../actions/order";
 function CartDetail() {
     const cart = useSelector(state => state.cartReducer);
     const total = cart.reduce((sum, item) => {
@@ -9,7 +11,12 @@ function CartDetail() {
     const price = cart.reduce((price, item) => {
         return price += item.info.special_price * item.quantity;
     }, 0);
+    const nav = useNavigate();
     const dispatch = useDispatch();
+    // const handleAddToOrder = () => {
+    //     dispatch(addToOrder("ok", cart));
+    //     nav("/order")
+    // }
     return (
         <>
             <div className="cartDetail">
@@ -36,25 +43,25 @@ function CartDetail() {
                                                     {item.info.name}
                                                 </td>
                                                 <td className="cartDetail__image">
-                                                <img src={item.info.image}/>
+                                                    <img src={item.info.image} />
                                                 </td>
                                                 <td className="cartDetail__price">
                                                     {(item.info.special_price).toLocaleString("vi-VN")}đ
                                                 </td>
                                                 <td className="cartDetail__quantity">{item.quantity}</td>
                                                 <td className="cartDetail__total-price">{((item.info.special_price) * (item.quantity)).toLocaleString("vi-VN")}đ</td>
-                                                <td className="cartDetail__delete" onClick={() => {dispatch(deleteProduct(item.url))}}>Xóa</td>
+                                                <td className="cartDetail__delete" onClick={() => { dispatch(deleteProduct(item.url)) }}>Xóa</td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
-                                    <div className=" cartDetail__footer">
-                                        <span>Tổng tiền: </span>
-                                        <div>{price.toLocaleString("vi-VN")}đ</div>
-                                        <button className="col-2">THANH TOÁN</button>
-                                    </div>
-                                    
+                                <div className=" cartDetail__footer">
+                                    <span>Tổng tiền: </span>
+                                    <div>{price.toLocaleString("vi-VN")}đ</div>
+                                    <button className="col-2">THANH TOÁN</button>
                                 </div>
+
+                            </div>
                         </>) : (<>
                             <div className="cartDetail__title mt-20">Không có sản phẩm nào trong giỏ hàng</div>
                         </>)
