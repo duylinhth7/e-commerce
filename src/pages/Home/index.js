@@ -1,4 +1,5 @@
 import Banner from "../../components/banner";
+import BannerApple from "../../components/bannerApple";
 import BoxIphone from "../../components/boxIphone";
 import BoxOppo from "../../components/boxOppo";
 import BoxSamsung from "../../components/boxSamsung";
@@ -17,11 +18,14 @@ function Home() {
                         <button>Tìm hiểu thêm</button>
                     </div>
                     <video className="col-12" autoPlay muted loop>
-                        <source src={bannerMain} type="video/mp4"/>   
+                        <source src={bannerMain} type="video/mp4" />
                     </video>
                 </div>
                 <div className="mt-20">
                     <BoxIphone />
+                </div>
+                <div className="mt-50">
+                    <BannerApple />
                 </div>
                 <div className="mt-20">
                     <BoxSamsung />

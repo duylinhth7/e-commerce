@@ -1,7 +1,7 @@
-export const addToOrder = (url, info) => {
+export const addToOrder = (info) => {
+    // console.log(info)
     return{
         type: "ADD_TO_ORDER",
-        url: url,
         info: info
     }
 }

@@ -46,9 +46,7 @@ function Header() {
                 <div className="container">
                     <div className="row">
                         <div className="layoutDefault__header-left col-3">
-                            <div className="layoutDefault__header-logo" onClick={() => { nav("/") }}>
-                                LOGO
-                            </div>
+                            <a className="layoutDefault__header-logo" href="/">LOGO</a>
                         </div>
                         <div className="layoutDefault__header-mid col-6">
                             <Search />

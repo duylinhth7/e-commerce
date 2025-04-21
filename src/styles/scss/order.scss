@@ -78,12 +78,10 @@
             color: #fff;
             font-weight: 600;
             border-radius: 7px;
-            border: 1px solid #fff;
+            // border: 1px solid #fff;
             &:hover{
-                background-color: #fff;
-                border: 1px solid #FFC234;
-                color: red;
-                transition: 0.5s;
+                background-color: #f1bf48;
+                transition: 0.5s ease-in-out;
             }
         }
     }

@@ -13,10 +13,10 @@ function CartDetail() {
     }, 0);
     const nav = useNavigate();
     const dispatch = useDispatch();
-    // const handleAddToOrder = () => {
-    //     dispatch(addToOrder("ok", cart));
-    //     nav("/order")
-    // }
+    const handleAddToOrder = () => {
+        dispatch(addToOrder(cart));
+        nav("/order")
+    }
     return (
         <>
             <div className="cartDetail">
@@ -58,7 +58,7 @@ function CartDetail() {
                                 <div className=" cartDetail__footer">
                                     <span>Tổng tiền: </span>
                                     <div>{price.toLocaleString("vi-VN")}đ</div>
-                                    <button className="col-2">THANH TOÁN</button>
+                                    <button className="col-2" onClick={()=> (handleAddToOrder(cart))}>THANH TOÁN</button>
                                 </div>
 
                             </div>

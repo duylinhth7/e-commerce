@@ -18,7 +18,6 @@ function BoxOppo() {
     const handleClick = (index) => {
         nav(`/detail/oppo/${index}`);
     };
-    console.log(data)
     return (
         <>
             {data ? (

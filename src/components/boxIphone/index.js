@@ -62,7 +62,8 @@ function BoxIphone() {
     };
     const addCart = (product) => {
         dispatch(addToCart(product))
-    }
+    };
+    
     return (
         <>
             {

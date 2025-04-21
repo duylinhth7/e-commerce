@@ -4,7 +4,6 @@ import { getListSamsung } from "../../services/getListProducts";
 import ViewMore from "../viewMore";
 import { useNavigate } from "react-router-dom";
 import ProductActions from "../productActions";
-import LazyLoadWrapper from "../lazyload";
 
 function BoxSamsung() {
     const [data, setData] = useState(null);

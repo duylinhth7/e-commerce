@@ -4,7 +4,7 @@ function ViewMore() {
     return (
         <>
             <div className="text-center mt-20">
-                <a className='view-more'>
+                <a href="#" className='view-more'>
                     <span>Xem thêm</span>
                     <i><DownOutlined /></i>
                 </a>

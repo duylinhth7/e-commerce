@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import "../../styles/scss/iphonePage.scss";
 import { getListSamsung } from "../../services/getListProducts";
 import ProductActions from "../../components/productActions";
+import { useNavigate } from "react-router-dom";
 function SamSungPage() {
     const [data, setData] = useState(null);
     const fetchApi = async () => {
@@ -13,8 +14,7 @@ function SamSungPage() {
     useEffect(() => {
         fetchApi();
     }, []);
-    // console.log(data)
-
+    const nav =  useNavigate();
 
     return (
         <>
@@ -41,7 +41,7 @@ function SamSungPage() {
                         <div className="page-list mt-50">
                             <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
                                 {data.map((item, index) => (
-                                    <div className="page-item" key={index}>
+                                    <div className="page-item" key={index} onClick={() => nav(`/detail/samsung/${index}`)} >
                                         <div className="page-image">
                                             <img src={item.image} />
                                         </div>

@@ -9,6 +9,7 @@ import { ShoppingOutlined, TagOutlined } from "@ant-design/icons"
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, updateQuantity } from "../../actions/cart";
 import {addToOrder } from "../../actions/order"
+import { notification } from "antd";
 
 function DetailtProduct() {
     const params = useParams();
@@ -47,11 +48,21 @@ function DetailtProduct() {
         }
     }
     const handleAddToOrder = () => {
-        dispatch(addToOrder(data.url, data));
+        dispatch(addToOrder(data));
         nav("/order")
-    }
+    };
+    const [api, contextHolder] = notification.useNotification();
+    const openNotification = () => {
+        api.open({
+          message: 'Thông báo!',
+          description:
+            'Thêm vào giỏ hàng thành công!',
+          duration: 2,
+        });
+      };
     return (
         <>
+        {contextHolder}
             {data ? (
                 <>
                     <div className="detail mt-20">
@@ -122,7 +133,7 @@ function DetailtProduct() {
                                                 <div className="detail__buyNow" onClick={() => (handleAddToOrder())}><ShoppingOutlined /> MUA HÀNG NGAY</div>
                                             </div>
                                             <div className="col-6">
-                                                <div className="mt-20 detail__add" onClick={() => (handleAddToCart())}>THÊM VÀO GIỎ HÀNG</div>
+                                                <div className="mt-20 detail__add" onClick={() => (handleAddToCart(), openNotification())}>THÊM VÀO GIỎ HÀNG</div>
                                             </div>
                                             <div className="col-6">
                                                 <div className="mt-20 detail__hotline">Liên hệ hotline</div>

@@ -4,7 +4,7 @@ function Order() {
     const order = useSelector(state => state.orderReducer)
     const totalPrice = order.reduce((price, item) => {
         return price += item.info.special_price * item.quantity
-    }, 0)
+    }, 0);
     return (
         <>
             <div className="container">
@@ -47,7 +47,7 @@ function Order() {
                                 <>
                                     {
                                         order.map((item, index) => (
-                                            <div className="order__product row">
+                                            <div className="order__product row" key={index}>
                                                 <div className="col-12">
                                                     <div className="order__product-info">
                                                         <div className="order__product-image">

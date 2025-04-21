@@ -2,6 +2,7 @@ import { HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/i
 import "../../styles/scss/productActions.scss";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, updateQuantity } from '../../actions/cart';
+import { notification } from 'antd';
 
 function ProductActions(props) { 
     const {item} = props;
@@ -13,11 +14,22 @@ function ProductActions(props) {
         } else {
             dispatch(addToCart(item.url, item))
         }
-    }
+    };
+    const [api, contextHolder] = notification.useNotification();
+    const openNotification = () => {
+        api.open({
+          message: 'Thông báo!',
+          description:
+            'Thêm vào giỏ hàng thành công!',
+          duration: 0,
+        });
+      };
+    
     return(
         <>
+        {contextHolder}
         <div className="action">
-            <a onClick={() => handleAddToCart()}><ShoppingCartOutlined /></a>
+            <a onClick={() => (handleAddToCart(), openNotification())}><ShoppingCartOutlined /></a>
             <a><HeartOutlined /></a>
         </div>
         </>

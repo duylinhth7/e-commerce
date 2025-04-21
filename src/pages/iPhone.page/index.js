@@ -5,6 +5,7 @@ import "../../styles/scss/iphonePage.scss";
 import { getListApple } from "../../services/getListProducts";
 import ProductActions from "../../components/productActions";
 import { Skeleton } from 'antd';
+import { useNavigate } from "react-router-dom";
 function IphonePage() {
     const [data, setData] = useState(null);
     const fetchApi = async () => {
@@ -15,6 +16,7 @@ function IphonePage() {
         fetchApi();
     }, []);
     // console.log(data)
+    const nav = useNavigate();
 
 
     return (
@@ -42,7 +44,7 @@ function IphonePage() {
                         <div className="page-list mt-50">
                             <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
                                 {data.map((item, index) => (
-                                    <div className="page-item" key={index}>
+                                    <div className="page-item" key={index} onClick={()=> (nav(`/detail/apple/${index}`))}>
                                         <div className="page-image">
                                             <img src={item.image} />
                                         </div>
