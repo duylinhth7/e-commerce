@@ -9,6 +9,7 @@ import SamSungPage from './pages/samsung.page/index.js';
 import OppoPage from './pages/oppo.page/index.js';
 import Contact from './pages/contact.page/index.js';
 import Order from './pages/order.page/index.js';
+import Search from './pages/search/index.js';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route path="/contact" element={<Contact />}/>
           <Route path="/cart-detail" element={<CartDetail />} />
           <Route path="/order" element={<Order />}/>
-          <Route path="/detail/:name/:index" element={<DetailtProduct />}/>
+          <Route path="/detail/:id" element={<DetailtProduct />}/>
+          <Route path="/search/:keyword" element={<Search />} />
         </Route>
       </Routes>
     </>

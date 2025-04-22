@@ -12,8 +12,8 @@ function BoxSamsung() {
         setData(res.slice(0, 10));
     };
     const nav = useNavigate();
-    const handleClick = (index) => {
-        nav(`/detail/samsung/${index}`);
+    const handleClick = (id) => {
+        nav(`/detail/${id}`);
     }
     useEffect(() => {
         fetchApi();
@@ -30,7 +30,7 @@ function BoxSamsung() {
                         </div>
                         <div className="box__samsung row  row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
                             {data.map((item, index) => (
-                                <div key={index} className="box__samsung-item" onClick={() => { handleClick(index) }}>
+                                <div key={index} className="box__samsung-item" onClick={() => { handleClick(item._id) }}>
                                     <div className="box__samsung-image">
                                         <img src={item.image} alt={item.name} loading="lazy" />
                                     </div>

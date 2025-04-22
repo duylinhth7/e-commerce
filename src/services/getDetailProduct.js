@@ -1,5 +1,5 @@
-export const getDetailProduct = async (name, index) => {
-    const response = await fetch("https://api.apify.com/v2/key-value-stores/Dk3WYwoH9GqWLc6Cm/records/LATEST")
+export const getDetailProduct = async (id) => {
+    const response = await fetch(`https://task-management-duylinh.vercel.app/api/v1/phone/detail/${id}`)
     const result =  await response.json();
-    return result.phone[name][index]
+    return result
 } 

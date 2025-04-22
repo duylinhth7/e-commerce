@@ -1,17 +1,17 @@
 export const getListApple = async () => {
-    const response = await fetch(`https://api.apify.com/v2/key-value-stores/Dk3WYwoH9GqWLc6Cm/records/LATEST`)
+    const response = await fetch(`https://task-management-duylinh.vercel.app/api/v1/phone?keyword=iphone`)
     const result = await response.json()
-    return result.phone.apple;
+    return result;
 };
 
 export const getListSamsung = async () => {
-    const response = await fetch(`https://api.apify.com/v2/key-value-stores/Dk3WYwoH9GqWLc6Cm/records/LATEST`)
+    const response = await fetch(`https://task-management-duylinh.vercel.app/api/v1/phone?keyword=samsung`)
     const result = await response.json()
-    return result.phone.samsung;
+    return result;
 };
 
 export const getListOppo = async () => {
-    const response = await fetch(`https://api.apify.com/v2/key-value-stores/Dk3WYwoH9GqWLc6Cm/records/LATEST`)
+    const response = await fetch(`https://task-management-duylinh.vercel.app/api/v1/phone?keyword=oppo`)
     const result = await response.json()
-    return result.phone.oppo;
+    return result
 };

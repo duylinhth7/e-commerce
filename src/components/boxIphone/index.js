@@ -58,12 +58,12 @@ function BoxIphone() {
     };
     const nav = useNavigate();
     const handleClick = (index) => {
-        nav(`/detail/apple/${index}`)
+        nav(`/detail/${index}`)
     };
     const addCart = (product) => {
         dispatch(addToCart(product))
     };
-    
+    console.log(data)
     return (
         <>
             {
@@ -80,7 +80,7 @@ function BoxIphone() {
                                 <div className="box__iphone-list">
                                     <Slider {...settings}>
                                         {data.map((item, index) => (
-                                            <div key={index} className="box__iphone-item" onClick={() => handleClick(index)} >
+                                            <div key={index} className="box__iphone-item" onClick={() => handleClick(item._id)} >
                                                 <div className="box__iphone-image">
                                                     <img src={item.image} loading="lazy" />
                                                 </div>

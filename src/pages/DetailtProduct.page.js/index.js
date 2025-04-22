@@ -8,7 +8,7 @@ import "../../styles/scss/detailProduct.scss";
 import { ShoppingOutlined, TagOutlined } from "@ant-design/icons"
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, updateQuantity } from "../../actions/cart";
-import {addToOrder } from "../../actions/order"
+import { addToOrder } from "../../actions/order"
 import { notification } from "antd";
 
 function DetailtProduct() {
@@ -20,7 +20,7 @@ function DetailtProduct() {
     const [selectedGb, setSelectedGb] = useState(0);
     // console.log(selectedGb)
     const fetchApi = async () => {
-        const res = await getDetailProduct(name, index);
+        const res = await getDetailProduct(params.id);
         setData(res);
     }
     useEffect(() => {
@@ -54,15 +54,15 @@ function DetailtProduct() {
     const [api, contextHolder] = notification.useNotification();
     const openNotification = () => {
         api.open({
-          message: 'Thông báo!',
-          description:
-            'Thêm vào giỏ hàng thành công!',
-          duration: 2,
+            message: 'Thông báo!',
+            description:
+                'Thêm vào giỏ hàng thành công!',
+            duration: 2,
         });
-      };
+    };
     return (
         <>
-        {contextHolder}
+            {contextHolder}
             {data ? (
                 <>
                     <div className="detail mt-20">
@@ -146,7 +146,11 @@ function DetailtProduct() {
                     </div>
                 </>)
                 :
-                (<></>)}
+                (<>
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </>)}
         </>
     )
 }

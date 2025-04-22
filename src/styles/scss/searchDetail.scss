@@ -1,0 +1,19 @@
+.search_detail-sort{
+    .sort_list{
+        display: flex;
+        &-item{
+            margin-right: 10px;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+            border-radius: 10px;
+        }
+    }
+    .selected{
+        background-color: #fcf2f2;
+        color: red;
+        border: 1px solid #d7000f;
+    }
+}
