@@ -13,9 +13,8 @@ import { notification } from "antd";
 
 function DetailtProduct() {
     const params = useParams();
-    const name = params.name;
+    const id = params.id;
     const dispatch = useDispatch();
-    const index = parseInt(params.index);
     const [data, setData] = useState(null);
     const [selectedGb, setSelectedGb] = useState(0);
     // console.log(selectedGb)
@@ -25,8 +24,7 @@ function DetailtProduct() {
     }
     useEffect(() => {
         fetchApi();
-    }, []);
-    // console.log(data);
+    }, [id]);
     var settings = {
         dots: true,
         autoplay: true,

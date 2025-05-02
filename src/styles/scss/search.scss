@@ -30,4 +30,36 @@
             cursor: pointer;
         }
     }
+    &_suggest{
+        position: absolute;
+        z-index: 999;
+        top: 100%;
+        background-color: #fff;
+        border-radius: 0 0 10px 10px;
+        overflow: hidden;
+        width: 100%;
+        .suggest{
+            &-item {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #ddd;
+                padding: 5px 0;
+            }
+            &-image {
+                width: 20%;
+                img {
+                    width: 100%;
+                }
+            }
+            &-name {
+                color: #000;
+                font-weight: 600;
+            }
+            &-price {
+                color: red;
+                font-weight: 600;
+            }
+        }
+    }
 }
