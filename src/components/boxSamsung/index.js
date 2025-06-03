@@ -37,8 +37,8 @@ function BoxSamsung() {
                                     <div className="box__samsung-info">
                                         <div className="box__samsung-name">{item.name}</div>
                                         <div className="box__samsung-price">
-                                            <div className="new">{item.special_price.toLocaleString("vi-VN")}đ</div>
-                                            <div className="old">{item.old_price.toLocaleString("vi-VN")}đ</div>
+                                            <div className="new">{item.special_price.toLocaleString("vi-VN") || item.price.toLocaleString("vi-VN")}đ</div>
+                                            <div className="old">{item.old_price.toLocaleString("vi-VN") || ""}đ</div>
                                         </div>
                                         <div className="inner-rate">
                                             <div className="start"></div>

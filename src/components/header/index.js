@@ -46,7 +46,7 @@ function Header() {
                 <div className="container">
                     <div className="row">
                         <div className="layoutDefault__header-left col-3">
-                            <a className="layoutDefault__header-logo" href="/">LOGO</a>
+                            <a className="layoutDefault__header-logo" href="/">SMART</a>
                         </div>
                         <div className="layoutDefault__header-mid col-6">
                             <Search />
